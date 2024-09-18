@@ -22,7 +22,7 @@ def main():
     houses = model['houses']  # Récupérer les noms des maisons
 
     # Charger les données de test
-    test_df = pd.read_csv('C:/Users/said/Desktop/choixpeau/datasets/dataset_test.csv')
+    test_df = pd.read_csv('datasets/dataset_test.csv')
 
     # Vérifier si toutes les features sélectionnées sont présentes dans les données de test
     missing_features = set(selected_features) - set(test_df.columns)

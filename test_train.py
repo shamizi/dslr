@@ -67,7 +67,7 @@ def validate_hyperparameters(X_train, y_train_one_hot):
 
 def main():
     # Charger les données
-    train_df = pd.read_csv('C:/Users/said/Desktop/choixpeau/datasets/dataset_train.csv')
+    train_df = pd.read_csv('datasets/dataset_train.csv')
     train_df = train_df.dropna()
 
     houses = train_df['Hogwarts House'].astype('category').cat.categories
@@ -112,7 +112,7 @@ def main():
     print("Modèle sauvegardé dans model.pkl")
 
     #### test sur donnée ou on connait la réponse
-    test_df = pd.read_csv('C:/Users/said/Desktop/choixpeau/datasets/dataset_train.csv')
+    test_df = pd.read_csv('datasets/dataset_train.csv')
     if 'Hogwarts House' in test_df.columns:
         test_df['Hogwarts House'] = test_df['Hogwarts House'].astype('category').cat.codes
         X_test = test_df[selected_features].values
