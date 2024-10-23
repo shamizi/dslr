@@ -19,7 +19,7 @@ def histogram(group_data, subjects):
     plt.show()
 
 def main():
-    df = pd.read_csv('C:/Users/said/Desktop/choixpeau/datasets/dataset_train.csv')
+    df = pd.read_csv('datasets/dataset_train.csv')
     group_data = df.groupby('Hogwarts House')
     subjects = subjects = df.columns[6:].tolist()
     histogram(group_data, subjects)

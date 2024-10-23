@@ -15,7 +15,7 @@ def scatterplot(df, correlation_matrix):
     plt.show()
 
 def main():
-    df = pd.read_csv('C:/Users/said/Desktop/choixpeau/datasets/dataset_train.csv')
+    df = pd.read_csv('datasets/dataset_train.csv')
     df_num = df.select_dtypes(include='number')
     correlation_matrix = df_num.corr()
     scatterplot(df_num, correlation_matrix)

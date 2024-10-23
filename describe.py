@@ -35,8 +35,11 @@ def maximum(colonne):
         if res < x:
             res = x
     return res
-
 def q1(colonne):
+    # Filtrer les valeurs manquantes
+    colonne = colonne.dropna()
+    if len(colonne) == 0:
+        return np.nan  # Retourne NaN si la colonne est vide après suppression des NaN
     sorted_data = sorted(colonne)
     n = (len(sorted_data) - 1) * 0.25
     floor = np.floor(n)
@@ -49,6 +52,10 @@ def q1(colonne):
         return d0 + d1
 
 def q3(colonne):
+    # Filtrer les valeurs manquantes
+    colonne = colonne.dropna()
+    if len(colonne) == 0:
+        return np.nan  # Retourne NaN si la colonne est vide après suppression des NaN
     sorted_data = sorted(colonne)
     n = (len(sorted_data) - 1) * 0.75
     floor = np.floor(n)
@@ -59,18 +66,20 @@ def q3(colonne):
         d0 = sorted_data[int(floor)] * (cell - n)
         d1 = sorted_data[int(cell)] * (n - floor)
         return d0 + d1
-    
+
 def mediane(colonne):
+    # Filtrer les valeurs manquantes
+    colonne = colonne.dropna()
+    if len(colonne) == 0:
+        return np.nan  # Retourne NaN si la colonne est vide après suppression des NaN
     sorted_data = sorted(colonne)
     n = len(sorted_data)
-    res = 0
     if (n % 2 == 1):
-        res = sorted_data[int((n+1) / 2) - 1]
+        return sorted_data[int((n+1) / 2) - 1]
     else:
         pos1 = (n // 2) - 1
         pos2 = n // 2
-        res = (sorted_data[pos1] + sorted_data[pos2]) / 2
-    return res
+        return (sorted_data[pos1] + sorted_data[pos2]) / 2
 
 def describe(df):
     # Sélectionner uniquement les colonnes numériques
@@ -107,15 +116,11 @@ def main():
         sys.exit(1)
     
     try:
-        # Lecture du fichier CSV
         df = pd.read_csv(file_path)
-        
-        # Vérification si le fichier est vide
         if df.empty:
             print("Erreur : le fichier est vide.")
             sys.exit(1)
         
-        # Affichage des statistiques avec pandas et la fonction personnalisée
         print("describe original")
         print(df.describe())
         print("mes valeurs")

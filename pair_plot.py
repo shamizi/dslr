@@ -9,8 +9,8 @@ def pair_plot(df, hue_column):
     plt.show()
 
 def main():
-    df = pd.read_csv('C:/Users/said/Desktop/choixpeau/datasets/dataset_train.csv')
-    df_num = df.select_dtypes(include='number')
+    df = pd.read_csv('datasets/dataset_train.csv')
+    df_num = df.select_dtypes(include='number').iloc[:,:8]
     df_with_house_name = pd.concat([df_num, df['Hogwarts House']], axis=1)
     pair_plot(df_with_house_name, hue_column='Hogwarts House')
 
